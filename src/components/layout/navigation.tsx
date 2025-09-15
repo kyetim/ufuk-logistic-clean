@@ -21,16 +21,16 @@ export function Navigation({ className }: NavigationProps) {
   return (
     <nav className={cn('backdrop-blur-xl bg-white/80 border-b border-gray-200/50 shadow-lg sticky top-0 z-50', className)}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-24">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center group">
               <img
                 src="/ufuk-loj-logo.svg"
                 alt="Ufuk Lojistik Logo"
-                className="w-14 h-14 group-hover:scale-105 transition-all duration-300"
+                className="w-12 h-12 group-hover:scale-105 transition-all duration-300"
               />
-              <span className="ml-4 text-3xl font-black tracking-wider bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent uppercase">
+              <span className="ml-3 text-2xl font-black tracking-wider bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent uppercase">
                 UFUK LOJİSTİK
               </span>
             </Link>
@@ -38,13 +38,13 @@ export function Navigation({ className }: NavigationProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-3">
+            <div className="ml-10 flex items-baseline space-x-2">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   to={item.href}
                   className={cn(
-                    'px-6 py-3 rounded-full text-lg font-semibold transition-all duration-300 relative group',
+                    'px-5 py-2.5 rounded-full text-base font-semibold transition-all duration-300 relative group',
                     location.pathname === item.href
                       ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
                       : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50/50'
@@ -61,17 +61,17 @@ export function Navigation({ className }: NavigationProps) {
 
           {/* Auth Buttons */}
           <div className="hidden md:block">
-            <div className="ml-4 flex items-center space-x-4">
+            <div className="ml-4 flex items-center space-x-3">
               <Button
                 variant="ghost"
-                size="lg"
-                className="text-gray-700 hover:text-blue-600 hover:bg-blue-50/50 rounded-full px-8 py-3 text-lg font-semibold transition-all duration-300"
+                size="sm"
+                className="text-gray-700 hover:text-blue-600 hover:bg-blue-50/50 rounded-full px-6 py-2 text-base font-semibold transition-all duration-300"
               >
                 Giriş Yap
               </Button>
               <Button
-                size="lg"
-                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-full px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                size="sm"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-full px-6 py-2 text-base font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               >
                 Kayıt Ol
               </Button>
@@ -80,9 +80,9 @@ export function Navigation({ className }: NavigationProps) {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <Button variant="ghost" size="lg" className="p-3">
+            <Button variant="ghost" size="icon">
               <svg
-                className="h-8 w-8"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
