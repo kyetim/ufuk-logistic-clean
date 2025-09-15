@@ -26,7 +26,7 @@ export function Navigation({ className }: NavigationProps) {
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center group">
               <img 
-                src="/ufuk-lojistik-logo.svg" 
+                src="/ufuk-loj-logo.svg" 
                 alt="Ufuk Lojistik Logo" 
                 className="w-12 h-12 group-hover:scale-105 transition-all duration-300"
               />
