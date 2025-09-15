@@ -5,36 +5,36 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 export function HomePage() {
     const services = [
         {
-            title: 'Hızlı Kargo',
-            description: 'Aynı gün ve ertesi gün teslimat seçenekleri ile hızlı kargo hizmeti.',
-            icon: '🚚',
+            title: 'Kara Yolu Taşımacılığı',
+            description: '100+ çekici ile güvenli ve hızlı kara yolu taşımacılığı hizmeti.',
+            icon: '🚛',
             gradient: 'from-blue-500 to-cyan-500',
         },
         {
-            title: 'Güvenli Taşıma',
-            description: 'Özel ambalajlama ve sigorta ile güvenli taşıma garantisi.',
-            icon: '🛡️',
+            title: 'Hava Yolu Taşımacılığı',
+            description: 'Hızlı ve güvenli hava yolu taşımacılığı ile acil teslimatlar.',
+            icon: '✈️',
             gradient: 'from-green-500 to-emerald-500',
         },
         {
-            title: '7/24 Takip',
-            description: 'Kargo durumunuzu 7/24 online olarak takip edebilirsiniz.',
-            icon: '📱',
+            title: 'Deniz Yolu Taşımacılığı',
+            description: 'Konteyner taşımacılığı ve deniz yolu lojistik çözümleri.',
+            icon: '🚢',
             gradient: 'from-purple-500 to-pink-500',
         },
         {
-            title: 'Uygun Fiyat',
-            description: 'Rekabetçi fiyatlar ve özel indirimlerle ekonomik çözümler.',
-            icon: '💰',
+            title: 'Forwarding & Depolama',
+            description: '180.000 m² terminal sahasında depolama ve elleçleme hizmetleri.',
+            icon: '🏭',
             gradient: 'from-orange-500 to-red-500',
         },
     ];
 
     const stats = [
-        { number: '50K+', label: 'Mutlu Müşteri' },
-        { number: '99.9%', label: 'Teslimat Başarısı' },
-        { number: '24/7', label: 'Müşteri Desteği' },
-        { number: '81', label: 'İl Kapsamı' },
+        { number: '42+', label: 'Yıllık Deneyim' },
+        { number: '350+', label: 'Çalışan' },
+        { number: '180K', label: 'm² Terminal' },
+        { number: '100+', label: 'Çekici' },
     ];
 
     return (
@@ -60,14 +60,14 @@ export function HomePage() {
                         <div className="mb-8">
                             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
                                 <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent animate-pulse">
-                                    Geleceğin
+                                    42 Yıllık
                                 </span>
                                 <br />
-                                <span className="text-white">Lojistik Çözümleri</span>
+                                <span className="text-white">Lojistik Deneyimi</span>
                             </h1>
                             <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
-                                AI destekli akıllı lojistik platformu ile kargo süreçlerinizi
-                                <span className="text-cyan-400 font-semibold"> devrim niteliğinde</span> dönüştürün.
+                                1982'den beri kara, hava ve deniz yolu taşımacılığında
+                                <span className="text-cyan-400 font-semibold"> güvenilir çözümler</span> sunuyoruz.
                             </p>
                         </div>
 

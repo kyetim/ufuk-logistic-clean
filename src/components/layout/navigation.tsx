@@ -11,6 +11,7 @@ export function Navigation({ className }: NavigationProps) {
 
   const navItems = [
     { href: '/', label: 'Ana Sayfa' },
+    { href: '/about', label: 'Hakkımızda' },
     { href: '/services', label: 'Hizmetlerimiz' },
     { href: '/tracking', label: 'Kargo Takip' },
     { href: '/pricing', label: 'Fiyatlandırma' },
@@ -24,10 +25,12 @@ export function Navigation({ className }: NavigationProps) {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center group">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-                <span className="text-white font-bold text-xl">U</span>
-              </div>
-              <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+              <img 
+                src="/ufuk-lojistik-logo.svg" 
+                alt="Ufuk Lojistik Logo" 
+                className="w-12 h-12 group-hover:scale-105 transition-all duration-300"
+              />
+              <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent">
                 Ufuk Lojistik
               </span>
             </Link>

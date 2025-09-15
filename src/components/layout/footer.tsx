@@ -12,14 +12,16 @@ export function Footer({ className }: FooterProps) {
           {/* Logo ve Açıklama */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-4">
-              <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">U</span>
-              </div>
-              <span className="ml-2 text-xl font-bold">Ufuk Lojistik</span>
+              <img 
+                src="/ufuk-lojistik-logo.svg" 
+                alt="Ufuk Lojistik Logo" 
+                className="w-10 h-10"
+              />
+              <span className="ml-3 text-xl font-bold">Ufuk Lojistik</span>
             </div>
             <p className="text-gray-300 mb-4 max-w-md">
-              Türkiye'nin güvenilir lojistik partneri. Hızlı, güvenli ve ekonomik
-              kargo hizmetleri ile ihtiyaçlarınızı karşılıyoruz.
+              1982'den beri kara, hava ve deniz yolu taşımacılığında güvenilir çözümler sunan,
+              350+ çalışanıyla lojistik sektörünün öncü şirketlerinden biriyiz.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -53,6 +55,11 @@ export function Footer({ className }: FooterProps) {
                 </Link>
               </li>
               <li>
+                <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
+                  Hakkımızda
+                </Link>
+              </li>
+              <li>
                 <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
                   Hizmetlerimiz
                 </Link>
@@ -75,16 +82,16 @@ export function Footer({ className }: FooterProps) {
             <h3 className="text-lg font-semibold mb-4">İletişim</h3>
             <ul className="space-y-2 text-gray-300">
               <li>
-                <span className="block">📞 +90 (212) 555 0123</span>
+                <span className="block">📞 +90 (324) 555 0123</span>
               </li>
               <li>
                 <span className="block">✉️ info@ufuklojistik.com</span>
               </li>
               <li>
-                <span className="block">📍 İstanbul, Türkiye</span>
+                <span className="block">📍 Mersin, Türkiye</span>
               </li>
               <li>
-                <span className="block">🕒 7/24 Hizmet</span>
+                <span className="block">🏢 Gaziantep & İskenderun Şubeleri</span>
               </li>
             </ul>
           </div>
