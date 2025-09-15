@@ -25,13 +25,13 @@ export function Navigation({ className }: NavigationProps) {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center group">
-              <img 
-                src="/ufuk-loj-logo.svg" 
-                alt="Ufuk Lojistik Logo" 
+              <img
+                src="/ufuk-loj-logo.svg"
+                alt="Ufuk Lojistik Logo"
                 className="w-12 h-12 group-hover:scale-105 transition-all duration-300"
               />
-              <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent">
-                Ufuk Lojistik
+              <span className="ml-3 text-2xl font-black tracking-wider bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent uppercase">
+                UFUK LOJİSTİK
               </span>
             </Link>
           </div>

@@ -12,9 +12,9 @@ export function Footer({ className }: FooterProps) {
           {/* Logo ve Açıklama */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-4">
-              <img 
-                src="/ufuk-loj-logo.svg" 
-                alt="Ufuk Lojistik Logo" 
+              <img
+                src="/ufuk-loj-logo.svg"
+                alt="Ufuk Lojistik Logo"
                 className="w-10 h-10"
               />
               <span className="ml-3 text-xl font-bold">Ufuk Lojistik</span>

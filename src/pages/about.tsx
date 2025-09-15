@@ -9,13 +9,13 @@ export function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-secondary-400/10"></div>
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
-            <div className="flex justify-center mb-8">
-              <img 
-                src="/ufuk-loj-logo.svg" 
-                alt="Ufuk Lojistik Logo" 
-                className="w-24 h-24"
-              />
-            </div>
+                        <div className="flex justify-center mb-8">
+                            <img
+                                src="/ufuk-loj-logo.svg"
+                                alt="Ufuk Lojistik Logo"
+                                className="w-24 h-24"
+                            />
+                        </div>
                         <h1 className="text-5xl font-bold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent mb-6">
                             Hakkımızda
                         </h1>
