@@ -12,9 +12,9 @@ export function Navigation({ className }: NavigationProps) {
   const navItems = [
     { href: '/', label: 'Ana Sayfa' },
     { href: '/about', label: 'Hakkımızda' },
-    { href: '/services', label: 'Hizmetlerimiz' },
-    { href: '/tracking', label: 'Kargo Takip' },
-    { href: '/pricing', label: 'Fiyatlandırma' },
+    { href: '/services', label: 'Hizmetler' },
+    { href: '/tracking', label: 'Takip' },
+    { href: '/pricing', label: 'Fiyatlar' },
     { href: '/contact', label: 'İletişim' },
   ];
 
@@ -38,13 +38,13 @@ export function Navigation({ className }: NavigationProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-2">
+            <div className="ml-10 flex items-center space-x-1">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   to={item.href}
                   className={cn(
-                    'px-5 py-2.5 rounded-full text-base font-semibold transition-all duration-300 relative group',
+                    'px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 relative group whitespace-nowrap',
                     location.pathname === item.href
                       ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
                       : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50/50'
