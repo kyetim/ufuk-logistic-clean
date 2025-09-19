@@ -1,10 +1,8 @@
-import React, { useState, useRef, useEffect, Suspense } from 'react';
+import { useState, useRef, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import {
-    Text,
     Html,
     Environment,
-    PerspectiveCamera,
     OrbitControls,
     useProgress
 } from '@react-three/drei';
@@ -120,7 +118,7 @@ function Magazine({
     onPageChange: (page: number) => void;
 }) {
     const groupRef = useRef<THREE.Group>(null);
-    const { camera } = useThree();
+    const { camera: _camera } = useThree();
 
     useFrame(() => {
         if (groupRef.current) {
@@ -233,20 +231,20 @@ export function VirtualMagazine({
     pages,
     currentPage,
     onPageChange,
-    enableSwipe = true,
+    enableSwipe: _enableSwipe = true,
     enableKeyboard = true,
-    showPageNumbers = true,
+    showPageNumbers: _showPageNumbers = true,
     enableZoom = true,
-    enableFullscreen = true
+    enableFullscreen: _enableFullscreen = true
 }: VirtualMagazineProps) {
-    const { t } = useLanguage();
+    const { t: _t } = useLanguage();
     const [isFlipping, setIsFlipping] = useState(false);
     const [flipProgress, setFlipProgress] = useState(0);
     const [flipDirection, setFlipDirection] = useState<'left' | 'right' | null>(null);
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [zoom, setZoom] = useState(1);
 
-    const animationRef = useRef<number>();
+    const animationRef = useRef<number | undefined>(undefined);
 
     // Fullscreen functionality
     const toggleFullscreen = () => {

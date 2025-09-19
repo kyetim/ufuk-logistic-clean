@@ -141,7 +141,7 @@ export function EventDetailPage() {
         }
     };
 
-    const event = eventData[id as keyof typeof eventData];
+    const event = eventData[id as unknown as keyof typeof eventData];
 
     if (!event) {
         return (

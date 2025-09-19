@@ -123,7 +123,7 @@ export function PressNewsDetailPage() {
         }
     };
 
-    const news = newsData[id as keyof typeof newsData];
+    const news = newsData[id as unknown as keyof typeof newsData];
 
     if (!news) {
         return (

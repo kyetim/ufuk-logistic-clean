@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { SoundEffects, HapticFeedback } from '../../utils/soundEffects';
 
@@ -13,13 +13,13 @@ export function FullScreenMagazine({
     currentPage,
     onPageChange
 }: FullScreenMagazineProps) {
-    const { t } = useLanguage();
+    const { t: _t } = useLanguage();
     const [isFlipping, setIsFlipping] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
 
     const iframeRef = useRef<HTMLIFrameElement>(null);
-    const animationRef = useRef<number>();
+    const animationRef = useRef<number | undefined>(undefined);
 
     // Initialize sound effects
     useEffect(() => {

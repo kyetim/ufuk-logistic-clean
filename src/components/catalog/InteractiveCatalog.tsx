@@ -10,7 +10,7 @@ interface InteractiveCatalogProps {
 }
 
 export const InteractiveCatalog = forwardRef<HTMLDivElement, InteractiveCatalogProps>(
-    ({ currentPage, isFlipping, onPageChange, totalPages }, ref) => {
+    ({ currentPage, isFlipping, onPageChange, totalPages }, _ref) => {
         const { t } = useLanguage();
         const [isDragging, setIsDragging] = useState(false);
         const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
@@ -163,12 +163,14 @@ export const InteractiveCatalog = forwardRef<HTMLDivElement, InteractiveCatalogP
                     onMouseDown={handleMouseDown}
                     onMouseMove={handleMouseMove}
                     onMouseUp={handleMouseUp}
-                    onMouseLeave={handleMouseUp}
+                    onMouseLeave={() => {
+                        handleMouseUp();
+                        setIsHovered(false);
+                    }}
                     onTouchStart={handleTouchStart}
                     onTouchMove={handleTouchMove}
                     onTouchEnd={handleTouchEnd}
                     onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
                     onClick={handleCatalogClick}
                 >
                     {/* Catalog Shadow */}

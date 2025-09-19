@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 interface IframePageProps {
@@ -16,11 +16,11 @@ export function IframePage({
     pageNumber,
     isActive,
     isFlipping,
-    flipProgress,
-    flipDirection,
+    flipProgress: _flipProgress,
+    flipDirection: _flipDirection,
     onPageClick
 }: IframePageProps) {
-    const { t } = useLanguage();
+    const { t: _t } = useLanguage();
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
     const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -42,11 +42,11 @@ export function IframePage({
 
     // Calculate transform based on flip state
     const getTransform = () => {
-        if (!isFlipping || flipDirection === null) {
+        if (!isFlipping || _flipDirection === null) {
             return 'rotateY(0deg) scale(1)';
         }
 
-        const { flipProgress, flipDirection } = { flipProgress, flipDirection };
+        const { flipProgress, flipDirection } = { flipProgress: _flipProgress, flipDirection: _flipDirection };
         let rotationY = 0;
         let scale = 1;
 

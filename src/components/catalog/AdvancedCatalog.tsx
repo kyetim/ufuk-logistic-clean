@@ -27,7 +27,7 @@ export function AdvancedCatalog({ currentPage, onPageChange, totalPages }: Advan
     const [isHovered, setIsHovered] = useState(false);
 
     const catalogRef = useRef<HTMLDivElement>(null);
-    const animationRef = useRef<number>();
+    const animationRef = useRef<number | undefined>(undefined);
 
     // Realistic page flip animation
     const flipPage = useCallback((direction: 'left' | 'right') => {
@@ -211,8 +211,8 @@ export function AdvancedCatalog({ currentPage, onPageChange, totalPages }: Advan
                     onClick={() => handleCornerClick('left')}
                     disabled={currentPage === 0 || pageState.isFlipping}
                     className={`w-16 h-16 rounded-full bg-white/90 backdrop-blur-sm shadow-xl flex items-center justify-center transition-all duration-300 ${currentPage === 0 || pageState.isFlipping
-                            ? 'opacity-50 cursor-not-allowed'
-                            : 'hover:bg-white hover:scale-110 hover:shadow-2xl'
+                        ? 'opacity-50 cursor-not-allowed'
+                        : 'hover:bg-white hover:scale-110 hover:shadow-2xl'
                         }`}
                 >
                     <svg className="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -227,8 +227,8 @@ export function AdvancedCatalog({ currentPage, onPageChange, totalPages }: Advan
                     onClick={() => handleCornerClick('right')}
                     disabled={currentPage === totalPages - 1 || pageState.isFlipping}
                     className={`w-16 h-16 rounded-full bg-white/90 backdrop-blur-sm shadow-xl flex items-center justify-center transition-all duration-300 ${currentPage === totalPages - 1 || pageState.isFlipping
-                            ? 'opacity-50 cursor-not-allowed'
-                            : 'hover:bg-white hover:scale-110 hover:shadow-2xl'
+                        ? 'opacity-50 cursor-not-allowed'
+                        : 'hover:bg-white hover:scale-110 hover:shadow-2xl'
                         }`}
                 >
                     <svg className="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -249,12 +249,14 @@ export function AdvancedCatalog({ currentPage, onPageChange, totalPages }: Advan
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseUp}
+                onMouseLeave={() => {
+                    handleMouseUp();
+                    setIsHovered(false);
+                }}
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
                 onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
             >
                 {/* Book Shadow */}
                 <div
@@ -350,7 +352,7 @@ export function AdvancedCatalog({ currentPage, onPageChange, totalPages }: Advan
 
 // Magazine Page Content Component
 function MagazinePageContent({ pageNumber }: { pageNumber: number }) {
-    const { t } = useLanguage();
+    const { t: _t } = useLanguage();
 
     const getPageContent = (pageNum: number) => {
         switch (pageNum) {

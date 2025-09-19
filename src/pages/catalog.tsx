@@ -1,11 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Advanced3DCatalog } from '../components/catalog/Advanced3DCatalog';
 import { ErrorBoundary } from '../components/catalog/ErrorBoundary';
 
 export function CatalogPage() {
-    const { t } = useLanguage();
-    const [currentPage, setCurrentPage] = useState(0);
+    const { t: _t } = useLanguage();
+    const [, setCurrentPage] = useState(0);
     const [isFullscreen, setIsFullscreen] = useState(false);
 
     const handlePageChange = (page: number) => {

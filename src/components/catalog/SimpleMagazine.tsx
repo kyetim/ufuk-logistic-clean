@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { SoundEffects, HapticFeedback } from '../../utils/soundEffects';
 import { MagazineControls } from './MagazineControls';
@@ -18,13 +18,13 @@ export function SimpleMagazine({
     pages,
     currentPage,
     onPageChange,
-    enableSwipe = true,
+    enableSwipe: _enableSwipe = true,
     enableKeyboard = true,
-    showPageNumbers = true,
-    enableZoom = true,
-    enableFullscreen = true
+    showPageNumbers: _showPageNumbers = true,
+    enableZoom: _enableZoom = true,
+    enableFullscreen: _enableFullscreen = true
 }: SimpleMagazineProps) {
-    const { t } = useLanguage();
+    const { t: _t } = useLanguage();
     const [isFlipping, setIsFlipping] = useState(false);
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [zoom, setZoom] = useState(1);
@@ -32,7 +32,7 @@ export function SimpleMagazine({
     const [hasError, setHasError] = useState(false);
 
     const iframeRef = useRef<HTMLIFrameElement>(null);
-    const animationRef = useRef<number>();
+    const animationRef = useRef<number | undefined>(undefined);
 
     // Initialize sound effects
     useEffect(() => {
@@ -79,7 +79,8 @@ export function SimpleMagazine({
             const progress = Math.min(elapsed / duration, 1);
 
             // Easing function for realistic page turn
-            const easeProgress = 1 - Math.pow(1 - progress, 3);
+            // Easing function for realistic page turn
+            // const easeProgress = 1 - Math.pow(1 - progress, 3);
 
             if (progress < 1) {
                 animationRef.current = requestAnimationFrame(animate);
@@ -300,7 +301,7 @@ export function SimpleMagazine({
             </div>
 
             {/* Page flip animation styles */}
-            <style jsx>{`
+            <style>{`
         .page-flipping {
           animation: pageFlip 0.8s ease-in-out;
         }

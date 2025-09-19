@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { useLanguage } from '../contexts/LanguageContext';
 
 export function SeaTransportPage() {
-    const { t } = useLanguage();
+    const { t: _t } = useLanguage();
 
     const services = [
         {

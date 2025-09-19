@@ -17,7 +17,7 @@ interface Advanced3DCatalogProps {
 }
 
 export function Advanced3DCatalog({ onPageChange, onFullscreenChange }: Advanced3DCatalogProps) {
-    const { t } = useLanguage();
+    const { t: _t } = useLanguage();
     const [currentPage, setCurrentPage] = useState(0);
     const [isFlipping, setIsFlipping] = useState(false);
     const [flipDirection, setFlipDirection] = useState<'left' | 'right' | null>(null);
@@ -26,7 +26,7 @@ export function Advanced3DCatalog({ onPageChange, onFullscreenChange }: Advanced
     const [isFullscreen, setIsFullscreen] = useState(false);
 
     const catalogRef = useRef<HTMLDivElement>(null);
-    const animationRef = useRef<number>();
+    const animationRef = useRef<number | undefined>(undefined);
 
     // Katalog sayfaları - Genişletilmiş Ufuk Lojistik içeriği
     const catalogPages: CatalogPage[] = [

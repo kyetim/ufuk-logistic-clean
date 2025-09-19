@@ -6,8 +6,8 @@ interface CatalogPageProps {
     isFlipping: boolean;
 }
 
-export function CatalogPage({ pageNumber, isActive, isFlipping }: CatalogPageProps) {
-    const { t } = useLanguage();
+export function CatalogPage({ pageNumber, isActive: _isActive, isFlipping }: CatalogPageProps) {
+    const { t: _t } = useLanguage();
 
     // Sayfa içeriklerini tanımla
     const getPageContent = (pageNum: number) => {
@@ -211,7 +211,7 @@ export function CatalogPage({ pageNumber, isActive, isFlipping }: CatalogPagePro
                             {pageContent.title}
                         </h2>
                         <div className="space-y-6">
-                            {pageContent.content?.sections.map((section: any, index: number) => (
+                            {pageContent.content?.sections?.map((section: any, index: number) => (
                                 <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 group">
                                     <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors duration-300">
                                         {section.title}
@@ -232,7 +232,7 @@ export function CatalogPage({ pageNumber, isActive, isFlipping }: CatalogPagePro
                             {pageContent.title}
                         </h2>
                         <div className="grid grid-cols-1 gap-6">
-                            {pageContent.content?.values.map((value: any, index: number) => (
+                            {pageContent.content?.values?.map((value: any, index: number) => (
                                 <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 group">
                                     <div className="flex items-center space-x-6">
                                         <div className="text-4xl group-hover:scale-110 transition-transform duration-300">{value.icon}</div>
@@ -271,7 +271,7 @@ export function CatalogPage({ pageNumber, isActive, isFlipping }: CatalogPagePro
                             </div>
                         </div>
                         <div className="space-y-6">
-                            {pageContent.content?.sections.map((section: any, index: number) => (
+                            {pageContent.content?.sections?.map((section: any, index: number) => (
                                 <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 group">
                                     <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
                                         {section.title}
@@ -303,7 +303,7 @@ export function CatalogPage({ pageNumber, isActive, isFlipping }: CatalogPagePro
                             {pageContent.title}
                         </h2>
                         <div className="grid grid-cols-2 gap-6">
-                            {pageContent.content?.facilities.map((facility: any, index: number) => (
+                            {pageContent.content?.facilities?.map((facility: any, index: number) => (
                                 <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 text-center hover:bg-white/15 transition-all duration-300 hover:scale-105 group">
                                     <div className="text-3xl font-bold text-white mb-2 group-hover:text-orange-300 transition-colors duration-300">
                                         {facility.value}
@@ -338,7 +338,7 @@ export function CatalogPage({ pageNumber, isActive, isFlipping }: CatalogPagePro
                             {pageContent.title}
                         </h2>
                         <div className="space-y-6">
-                            {pageContent.content?.sections.map((section: any, index: number) => (
+                            {pageContent.content?.sections?.map((section: any, index: number) => (
                                 <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 group">
                                     <h3 className="text-xl font-bold text-white mb-3 group-hover:text-indigo-300 transition-colors duration-300">
                                         {section.title}
@@ -371,7 +371,7 @@ export function CatalogPage({ pageNumber, isActive, isFlipping }: CatalogPagePro
                         </h2>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                            {pageContent.content?.contact.map((contact: any, index: number) => (
+                            {pageContent.content?.contact?.map((contact: any, index: number) => (
                                 <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
                                     <div className="flex items-center space-x-4">
                                         <div className="text-3xl">{contact.icon}</div>

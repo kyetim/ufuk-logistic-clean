@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { ScrollToTopButton } from '../components/ui/scroll-to-top-button';
 import { useLanguage } from '../contexts/LanguageContext';
 import { cn } from '../utils/cn';
 
@@ -314,6 +315,7 @@ export function AuthPage() {
           </Link>
         </div>
       </div>
+      <ScrollToTopButton />
     </div>
   );
 }

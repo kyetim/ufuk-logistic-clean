@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import { useLanguage } from '../../contexts/LanguageContext';
 
 export function FTLTransportDetailPage() {
-    const { t } = useLanguage();
+    const { t: _t } = useLanguage();
 
     const features = [
         {

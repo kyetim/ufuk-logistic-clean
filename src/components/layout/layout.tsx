@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigation } from './navigation';
 import { Footer } from './footer';
+import { ScrollToTopButton } from '../ui/scroll-to-top-button';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -15,6 +16,7 @@ export function Layout({ children, className }: LayoutProps) {
         {children}
       </main>
       <Footer />
+      <ScrollToTopButton />
     </div>
   );
 }
