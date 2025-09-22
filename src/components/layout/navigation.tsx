@@ -203,18 +203,18 @@ export function Navigation({ className }: NavigationProps) {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden fixed inset-x-0 top-24 bottom-0 bg-white z-40 overflow-y-auto">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200 shadow-lg min-h-full">
+          <div className="lg:hidden fixed inset-x-0 top-full left-0 right-0 bg-white z-50 overflow-y-auto max-h-screen">
+            <div className="px-4 pt-4 pb-6 space-y-2 bg-white border-t border-gray-200 shadow-xl">
               {navItems.map((item) => (
                 <div key={item.href} className="space-y-1">
                   <Link
                     to={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={cn(
-                      'block px-3 py-2 rounded-md text-base font-medium transition-all duration-200',
+                      'block px-4 py-3 rounded-lg text-lg font-semibold transition-all duration-200 border-l-4',
                       location.pathname === item.href
-                        ? 'bg-blue-50 text-blue-600'
-                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                        ? 'bg-blue-50 text-blue-600 border-blue-500'
+                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 border-transparent hover:border-gray-300'
                     )}
                   >
                     {item.label}
@@ -222,17 +222,17 @@ export function Navigation({ className }: NavigationProps) {
 
                   {/* Mobile Dropdown Items */}
                   {item.hasDropdown && item.dropdownItems && (
-                    <div className="ml-4 space-y-1">
+                    <div className="ml-6 space-y-1">
                       {item.dropdownItems.map((dropdownItem) => (
                         <Link
                           key={dropdownItem.href}
                           to={dropdownItem.href}
                           onClick={() => setIsMobileMenuOpen(false)}
                           className={cn(
-                            'block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200',
+                            'block px-4 py-2 rounded-md text-base font-medium transition-all duration-200 border-l-2',
                             location.pathname === dropdownItem.href
-                              ? 'bg-blue-50 text-blue-600'
-                              : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+                              ? 'bg-blue-50 text-blue-600 border-blue-400'
+                              : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50 border-transparent hover:border-gray-300'
                           )}
                         >
                           {dropdownItem.label}
@@ -244,14 +244,14 @@ export function Navigation({ className }: NavigationProps) {
               ))}
 
               {/* Mobile Auth Section */}
-              <div className="pt-4 border-t border-gray-200">
-                <div className="flex items-center justify-between px-3 py-2">
+              <div className="pt-6 border-t border-gray-200 mt-6">
+                <div className="flex items-center justify-between px-4 py-4">
                   <div className="w-20 h-8 flex items-center justify-center">
                     <LanguageSwitcher />
                   </div>
                   <Button
                     size="sm"
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-full px-4 py-2 text-sm font-semibold"
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-full px-6 py-3 text-base font-semibold shadow-lg"
                     asChild
                   >
                     <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
