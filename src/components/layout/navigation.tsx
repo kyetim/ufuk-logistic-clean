@@ -25,6 +25,20 @@ export function Navigation({ className }: NavigationProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Body scroll'u menü açıkken engelle
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup function
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   const navItems = [
     {
       label: t('nav.corporate'),
@@ -189,8 +203,8 @@ export function Navigation({ className }: NavigationProps) {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200 shadow-lg">
+          <div className="lg:hidden fixed inset-x-0 top-24 bottom-0 bg-white z-40 overflow-y-auto">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200 shadow-lg min-h-full">
               {navItems.map((item) => (
                 <div key={item.href} className="space-y-1">
                   <Link
