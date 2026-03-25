@@ -1,0 +1,4 @@
+## 2026-03-25 - [HIGH] Fix XSS Vulnerability in dangerouslySetInnerHTML
+**Vulnerability:** Found unsanitized usage of `dangerouslySetInnerHTML` across multiple pages (`kvk.tsx`, `press-news-detail.tsx`, `event-detail.tsx`) to render dynamic content such as news articles, event details, and localized content strings. This pattern makes the application highly susceptible to Cross-Site Scripting (XSS) attacks.
+**Learning:** The application renders rich HTML text directly from data structures or localization files. While this content might currently be safe or static, relying on it without sanitization is a bad security posture, especially if the source of this data is ever moved to a CMS or an external API.
+**Prevention:** Always use a robust HTML sanitization library like DOMPurify when rendering raw HTML in React using `dangerouslySetInnerHTML`. Never trust that dynamic strings contain safe HTML. Applied `DOMPurify.sanitize()` to all affected inputs.
