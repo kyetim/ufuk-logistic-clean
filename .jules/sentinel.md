@@ -1,0 +1,4 @@
+## 2025-01-20 - XSS Vulnerability in dynamically rendered React components
+ **Vulnerability:** Cross-Site Scripting (XSS) risk via `dangerouslySetInnerHTML` usage without prior sanitization in dynamic content components like `.tsx` pages (e.g. event details and press news details, and translations).
+ **Learning:** React's `dangerouslySetInnerHTML` is correctly named - it will bypass React's standard HTML escaping. If user-controlled or external data, like translation strings or CMS content, is passed into this prop without explicit sanitization, any embedded malicious scripts can be executed in the user's browser context.
+ **Prevention:** Implement and mandate the use of `DOMPurify.sanitize()` whenever `dangerouslySetInnerHTML` is utilized across the codebase to ensure only safe HTML is rendered.
