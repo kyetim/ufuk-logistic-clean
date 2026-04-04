@@ -1,0 +1,4 @@
+## 2024-05-24 - [Critical] Fix XSS Vulnerability in dangerouslySetInnerHTML Usage
+**Vulnerability:** Found multiple uses of `dangerouslySetInnerHTML` directly using dynamic content without sanitization in `src/pages/kvk.tsx`, `src/pages/press-news-detail.tsx`, and `src/pages/event-detail.tsx`. This makes the application vulnerable to Cross-Site Scripting (XSS).
+**Learning:** `dangerouslySetInnerHTML` must never be used with unsanitized dynamic content, even if the content originates from translations or seemingly trusted internal structures.
+**Prevention:** Always use a standard library like DOMPurify to sanitize dynamic HTML content prior to rendering it with `dangerouslySetInnerHTML`.
