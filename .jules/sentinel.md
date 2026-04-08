@@ -1,0 +1,4 @@
+## 2025-02-14 - XSS Vulnerability in dynamically rendered translations and content
+**Vulnerability:** Translation keys (`t('kvk.contact.address.content')`) and dynamic content variables (`news.content`, `event.content`) were rendered as raw HTML using `dangerouslySetInnerHTML` without any prior sanitization.
+**Learning:** Developers might assume translation files and local variable objects are safe. However, any content processed using `dangerouslySetInnerHTML` is susceptible to Cross-Site Scripting (XSS) if not properly sanitized, particularly if these values could ever be dynamically populated from an API or updated through a CMS in the future.
+**Prevention:** All inputs passed to React's `dangerouslySetInnerHTML` should be sanitized explicitly by default, even if they originate from internal text, translations, or hardcoded dictionaries. In this project, ensure `DOMPurify.sanitize()` is always used with `__html` assignments.
