@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
+import DOMPurify from 'dompurify';
 
 export function KVKPage() {
     const { t } = useLanguage();
@@ -211,7 +212,8 @@ export function KVKPage() {
                                 <CardTitle className="text-xl text-gray-900">{t('kvk.contact.address.title')}</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('kvk.contact.address.content') }}>
+                                {/* Security: Sanitize translation string before rendering as HTML to prevent XSS */}
+                                <p className="text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t('kvk.contact.address.content')) }}>
                                 </p>
                             </CardContent>
                         </Card>
@@ -226,7 +228,8 @@ export function KVKPage() {
                                 <CardTitle className="text-xl text-gray-900">{t('kvk.contact.email.title')}</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('kvk.contact.email.content') }}>
+                                {/* Security: Sanitize translation string before rendering as HTML to prevent XSS */}
+                                <p className="text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t('kvk.contact.email.content')) }}>
                                 </p>
                             </CardContent>
                         </Card>
