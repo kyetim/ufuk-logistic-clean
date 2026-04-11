@@ -1,0 +1,4 @@
+## 2023-10-27 - [XSS via dangerouslySetInnerHTML in translations and CMS data]
+**Vulnerability:** Raw HTML from translation keys (`t()`) and simulated CMS data (`news.content`, `event.content`) was being passed directly to `dangerouslySetInnerHTML` without sanitization.
+**Learning:** Even internal data sources like translation files and internal CMS data structures can be vectors for Cross-Site Scripting (XSS) if they are treated as safe HTML without validation. In this repository, `DOMPurify` is the required standard for sanitizing all dynamic HTML content.
+**Prevention:** Always wrap dynamic HTML content, including translation strings and dynamic CMS data, with `DOMPurify.sanitize()` before passing it to `dangerouslySetInnerHTML`. Add explicit security comments explaining the sanitization step.
