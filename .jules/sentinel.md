@@ -1,0 +1,4 @@
+## 2025-03-03 - [Fix] XSS Vulnerability via translation strings and dynamic content in React dangerouslySetInnerHTML
+**Vulnerability:** Found `dangerouslySetInnerHTML={{ __html: t('...') }}` and `dangerouslySetInnerHTML={{ __html: content }}` usages in `src/pages/kvk.tsx`, `src/pages/press-news-detail.tsx`, and `src/pages/event-detail.tsx` without sanitization.
+**Learning:** Translation strings containing HTML (`t()`) and simulated dynamic CMS data are frequently injected into React components in this codebase via `dangerouslySetInnerHTML` directly, posing XSS risks if translations or content are poisoned or modified maliciously.
+**Prevention:** Always use `DOMPurify.sanitize()` to wrap any dynamic string (translation or CMS content) before passing it to `dangerouslySetInnerHTML`. Added `dompurify` as a standard dependency and included inline JSX comments outside the tags for security tracking.
