@@ -1,0 +1,4 @@
+## 2024-05-24 - Cross-Site Scripting (XSS) via dangerouslySetInnerHTML
+**Vulnerability:** Found `dangerouslySetInnerHTML` being used directly with translation strings `t()` and dynamic content in `src/pages/kvk.tsx`, `src/pages/press-news-detail.tsx`, and `src/pages/event-detail.tsx` without prior sanitization. This allows potential execution of arbitrary JavaScript if the content is malicious.
+**Learning:** In a React application, `dangerouslySetInnerHTML` is explicitly unsafe, hence its name. Any dynamic content or translated strings containing HTML must be verified or sanitized before rendering to prevent XSS attacks.
+**Prevention:** Always use `DOMPurify.sanitize()` from the `dompurify` library when setting inner HTML dynamically. Additionally, we should wrap dynamic data like translation keys or external API content securely.
