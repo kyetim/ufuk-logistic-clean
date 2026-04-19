@@ -1,0 +1,5 @@
+## 2025-02-28 - Unsanitized Dynamic HTML in React
+
+**Vulnerability:** Found `dangerouslySetInnerHTML` being used to render translation strings (`t(...)`) and dynamic news/event content without any sanitization in `src/pages/kvk.tsx`, `src/pages/press-news-detail.tsx`, and `src/pages/event-detail.tsx`. This poses a significant Cross-Site Scripting (XSS) risk if translations or CMS data are ever modified or compromised to include malicious scripts.
+**Learning:** In this application, the custom localization context (`useLanguage()`) and CMS-like data often contain raw HTML tags for formatting, making it necessary to use `dangerouslySetInnerHTML`. However, developers were directly injecting this data without stripping potentially dangerous scripts.
+**Prevention:** The standard `dompurify` library must be used to sanitize all dynamic content before passing it to `dangerouslySetInnerHTML`. Whenever `dangerouslySetInnerHTML` is used for translation files or dynamic data, it must be wrapped as `__html: DOMPurify.sanitize(data)`. No need for `@types/dompurify` since the library provides its own types.
