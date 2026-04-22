@@ -1,0 +1,4 @@
+## 2024-05-20 - [DOMPurify Usage for XSS Prevention]
+**Vulnerability:** Found `dangerouslySetInnerHTML` being used directly with dynamic translation strings (`t(...)`) and mock API string data without sanitization in `src/pages/kvk.tsx`, `src/pages/press-news-detail.tsx`, and `src/pages/event-detail.tsx`, leading to XSS vulnerability.
+**Learning:** React JSX does not allow inline comments like `{/* comment */}` to be placed directly inside an element's opening tag attributes (e.g., `<div {/* comment */} />`). They must be placed outside the tag entirely. Translation strings (`t()`) and dynamic CMS data often contain raw HTML, so they must always be wrapped with `DOMPurify.sanitize()` before being passed to `dangerouslySetInnerHTML`.
+**Prevention:** Always ensure `DOMPurify.sanitize()` wraps any dynamic content assigned to `dangerouslySetInnerHTML`. Document this as standard library rule.
