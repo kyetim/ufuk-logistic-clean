@@ -1,0 +1,4 @@
+## 2026-05-04 - XSS Vulnerability in dangerouslySetInnerHTML
+**Vulnerability:** Found multiple instances where dynamic content (translations via `t()` and hardcoded CMS-like mock data) was passed directly into `dangerouslySetInnerHTML` without prior sanitization across `src/pages/kvk.tsx`, `src/pages/press-news-detail.tsx`, and `src/pages/event-detail.tsx`.
+**Learning:** `dangerouslySetInnerHTML` inherently trusts the provided HTML string. Passing unsanitized dynamic data (especially data that could potentially be modified by end-users or fetched from a compromised CMS/translation service) creates a severe risk for Cross-Site Scripting (XSS) attacks.
+**Prevention:** Always use a well-established standard library, such as DOMPurify, to sanitize raw HTML before passing it to `dangerouslySetInnerHTML` in React applications.
