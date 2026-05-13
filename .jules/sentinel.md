@@ -1,0 +1,4 @@
+## 2024-05-24 - Cross-Site Scripting (XSS) in dynamic content rendering
+**Vulnerability:** Found `dangerouslySetInnerHTML` being used to render raw dynamic HTML content (translations and CMS-like data) without prior sanitization in `src/pages/kvk.tsx`, `src/pages/press-news-detail.tsx`, and `src/pages/event-detail.tsx`.
+**Learning:** `dangerouslySetInnerHTML` is exactly what it sounds like—dangerous. If any of the translation strings or dynamic news/event content is sourced from untrusted user input or compromised backend services, it will execute arbitrary JavaScript in the victim's browser. Even statically defined translation strings are risky if they undergo string interpolation or are later moved to a dynamic source.
+**Prevention:** Always wrap variables passed to `dangerouslySetInnerHTML` with a reliable sanitizer like `DOMPurify.sanitize()`. Make this a standard practice for all raw HTML rendering across the codebase.
