@@ -1,0 +1,4 @@
+## 2024-05-18 - [XSS] Unsanitized HTML in dangerouslySetInnerHTML
+**Vulnerability:** Found `dangerouslySetInnerHTML` being used directly with translation strings (e.g., `t('...')`) and dynamic CMS data (e.g., `news.content`, `event.content`) without any sanitization in `src/pages/kvk.tsx`, `src/pages/press-news-detail.tsx`, and `src/pages/event-detail.tsx`.
+**Learning:** In this project, translation strings (`t()`) and dynamic CMS data often contain raw HTML. If these sources are ever compromised or populated with malicious content (e.g., via a CMS interface), it creates a critical Cross-Site Scripting (XSS) vulnerability when rendered directly to the DOM.
+**Prevention:** DOMPurify is the required standard library in this repository. Always wrap dynamic HTML content, including translation strings and CMS data, with `DOMPurify.sanitize()` before passing it to `dangerouslySetInnerHTML`.
