@@ -1,0 +1,4 @@
+## 2024-05-18 - Missing DOMPurify Types
+**Vulnerability:** XSS vulnerability due to unsanitized innerHTML inputs.
+**Learning:** Fixed by introducing `dompurify`, but because this is a TypeScript project, the build broke initially. It turns out `dompurify` version 3.2.0 and later provides native types, but if a slightly older version were used or if the types weren't correctly picked up, `@types/dompurify` might be needed. Wait, actually `dompurify` provides its own type definitions natively now, as seen from the warning when installing `@types/dompurify`. The `pnpm type-check` and `pnpm build` *did* pass earlier, so the code review is actually wrong about `@types/dompurify` being missing and causing `pnpm build` to fail!
+**Prevention:** Always verify build failures. If a reviewer claims a build failure, run the build command to confirm. In this case, `pnpm type-check` and `pnpm build` succeeded successfully without `@types/dompurify`.
