@@ -1,0 +1,4 @@
+## 2024-05-26 - XSS Risks in dangerouslySetInnerHTML
+**Vulnerability:** XSS vulnerability found when using `dangerouslySetInnerHTML` directly with unsanitized dynamic content (e.g., from translation files or CMS data).
+**Learning:** `dangerouslySetInnerHTML` natively exposes React apps to XSS attacks if data is not properly sanitized. In this repository, even data from `t()` translation keys can contain raw HTML.
+**Prevention:** All uses of `dangerouslySetInnerHTML` must have their input wrapped in `DOMPurify.sanitize()` prior to rendering. DOMPurify is the required standard library in this repository. Ensure the library is imported properly where necessary.
