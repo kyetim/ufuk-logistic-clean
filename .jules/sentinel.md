@@ -1,0 +1,4 @@
+## 2024-10-24 - Unsanitized `dangerouslySetInnerHTML` in Multiple Pages
+**Vulnerability:** Several pages (`kvk.tsx`, `press-news-detail.tsx`, `event-detail.tsx`) were rendering dynamic content (translations and mock data) directly to the DOM using `dangerouslySetInnerHTML` without any sanitization.
+**Learning:** Translation strings and data coming from APIs (even if mocked locally for now) are vectors for Cross-Site Scripting (XSS) if they contain unescaped HTML content. Trusting data purely because it originates from internal localization files or mock data objects is a common pitfall.
+**Prevention:** Always use a robust HTML sanitization library, such as `DOMPurify`, to sanitize any data before passing it to React's `dangerouslySetInnerHTML`. Ensure `dompurify` and `@types/dompurify` (if using TypeScript) are installed as dependencies.
