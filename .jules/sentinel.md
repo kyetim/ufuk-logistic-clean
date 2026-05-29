@@ -1,0 +1,4 @@
+## 2024-05-24 - Cross-Site Scripting (XSS) in `dangerouslySetInnerHTML`
+ **Vulnerability:** Unsanitized use of `dangerouslySetInnerHTML` across multiple pages (`kvk.tsx`, `press-news-detail.tsx`, `event-detail.tsx`) for rendering dynamic content and translation strings.
+ **Learning:** Translation files (`t()`) and dynamic CMS data often contain raw HTML. Passing them directly to `dangerouslySetInnerHTML` exposes the application to XSS attacks if the content source is ever compromised or manipulated.
+ **Prevention:** DOMPurify is the required standard library in this repository for sanitizing dynamic HTML content. Raw HTML must always be wrapped with `DOMPurify.sanitize()` before being passed to `dangerouslySetInnerHTML` to prevent XSS.
