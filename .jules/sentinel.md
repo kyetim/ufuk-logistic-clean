@@ -1,0 +1,4 @@
+## 2024-06-02 - Missing Sanitization in `dangerouslySetInnerHTML`
+**Vulnerability:** Found multiple instances where dynamic content (translation strings and mock data containing HTML) was passed directly into `dangerouslySetInnerHTML` without sanitization. This could lead to Cross-Site Scripting (XSS) if the input source becomes compromised or user-controllable.
+**Learning:** `dangerouslySetInnerHTML` is inherently risky, and React does not provide built-in sanitization for it. Even when the source seems safe (like localization strings or hardcoded mock data), defense-in-depth requires sanitization to prevent accidental vulnerabilities during future updates or refactoring.
+**Prevention:** Always use a standard library like `DOMPurify` to sanitize any string before passing it to `dangerouslySetInnerHTML`, regardless of the source. Wrap the input like this: `DOMPurify.sanitize(input)`.
