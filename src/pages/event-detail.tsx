@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify';
 import { useParams, Link } from 'react-router-dom';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
@@ -243,9 +244,10 @@ export function EventDetailPage() {
 
                                 <CardContent className="p-8">
                                     {/* Article Content */}
+                                    {/* Security: Sanitize CMS data to prevent XSS */}
                                     <div
                                         className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
-                                        dangerouslySetInnerHTML={{ __html: event.content }}
+                                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(event.content) }}
                                     />
 
                                     {/* Tags */}
