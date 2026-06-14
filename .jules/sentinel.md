@@ -1,0 +1,4 @@
+## 2024-05-24 - Cross-Site Scripting (XSS) via Translation Strings and Local CMS Data
+**Vulnerability:** Translation functions (`t()`) and local mock CMS data (`event.content`, `news.content`) were being directly injected into the DOM using `dangerouslySetInnerHTML` without any sanitization, creating an XSS vulnerability.
+**Learning:** Even internal translation strings and local CMS data should be considered potentially unsafe, especially if they are managed dynamically or could be modified in the future. Bypassing React's built-in XSS protection with `dangerouslySetInnerHTML` is dangerous without explicit sanitization.
+**Prevention:** Always use a standard library like `DOMPurify` to sanitize HTML content before passing it to `dangerouslySetInnerHTML` (`dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}`). Additionally, always install the corresponding `@types/*` package for TypeScript support when adding new security dependencies.
