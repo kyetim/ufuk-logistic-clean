@@ -1,0 +1,4 @@
+## 2024-07-03 - DOMPurify Missing on Dynamic Content and Translations
+**Vulnerability:** XSS vulnerabilities found in multiple pages (`kvk.tsx`, `press-news-detail.tsx`, `event-detail.tsx`) where raw translation strings and dynamic CMS data were injected directly into components using `dangerouslySetInnerHTML` without proper sanitization.
+**Learning:** In this project, translation files (`t()`) and dynamic content often contain raw HTML. The strict `dangerouslySetInnerHTML` API exposes the application to severe XSS risks if this content isn't rigorously sanitized beforehand.
+**Prevention:** Always use `DOMPurify.sanitize()` as the standard wrapper when passing dynamic string values or HTML strings to `dangerouslySetInnerHTML` in React components, and maintain security comments indicating the sanitization intent.
