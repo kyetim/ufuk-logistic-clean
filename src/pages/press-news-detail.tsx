@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { useLanguage } from '../contexts/LanguageContext';
+import DOMPurify from 'dompurify';
 
 export function PressNewsDetailPage() {
     const { id } = useParams();
@@ -224,9 +225,10 @@ export function PressNewsDetailPage() {
 
                                 <CardContent className="p-8">
                                     {/* Article Content */}
+                                    {/* Security: Sanitize dynamic CMS data to prevent XSS */}
                                     <div
                                         className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
-                                        dangerouslySetInnerHTML={{ __html: news.content }}
+                                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(news.content, { ADD_TAGS: ['iframe'], ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling'] }) }}
                                     />
 
                                     {/* Tags */}
