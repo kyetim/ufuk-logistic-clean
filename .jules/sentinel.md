@@ -1,0 +1,4 @@
+## 2024-05-24 - XSS via dangerouslySetInnerHTML in React
+ **Vulnerability:** Raw HTML from translations (`t()`) and dynamic CMS data were passed directly to `dangerouslySetInnerHTML` in React components (e.g., `src/pages/kvk.tsx`, `src/pages/press-news-detail.tsx`, `src/pages/event-detail.tsx`) without sanitization, creating an XSS risk.
+ **Learning:** In React apps, CMS content and translated strings often contain HTML tags that developers assume are safe. However, using `dangerouslySetInnerHTML` directly creates a common XSS vector if any user-generated or compromised content gets injected into the CMS or localization files.
+ **Prevention:** Always wrap dynamically rendered HTML in a robust sanitization library like DOMPurify (`DOMPurify.sanitize()`) before passing it to `dangerouslySetInnerHTML`. Be sure to configure DOMPurify to allow necessary tags (like `iframe` for video embeds) while keeping XSS protection intact.
