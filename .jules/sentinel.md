@@ -1,0 +1,4 @@
+## 2024-08-09 - Sanitize HTML Content in dangerouslySetInnerHTML
+**Vulnerability:** Cross-Site Scripting (XSS) vulnerability due to rendering un-sanitized dynamic content (translation strings and CMS data) using `dangerouslySetInnerHTML`.
+**Learning:** React's `dangerouslySetInnerHTML` is inherently dangerous if the input comes from untrusted sources, including translation files (`t()`) and dynamic CMS data, as they often contain raw HTML.
+**Prevention:** Always wrap dynamic HTML content with a sanitization library like `DOMPurify.sanitize()` before passing it to `dangerouslySetInnerHTML` to prevent XSS.
