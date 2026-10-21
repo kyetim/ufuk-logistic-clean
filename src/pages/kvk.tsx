@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -211,7 +212,7 @@ export function KVKPage() {
                                 <CardTitle className="text-xl text-gray-900">{t('kvk.contact.address.title')}</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('kvk.contact.address.content') }}>
+                                <p className="text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t('kvk.contact.address.content')) }}>
                                 </p>
                             </CardContent>
                         </Card>
@@ -226,7 +227,7 @@ export function KVKPage() {
                                 <CardTitle className="text-xl text-gray-900">{t('kvk.contact.email.title')}</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('kvk.contact.email.content') }}>
+                                <p className="text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t('kvk.contact.email.content')) }}>
                                 </p>
                             </CardContent>
                         </Card>
