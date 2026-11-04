@@ -73,7 +73,6 @@
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     opacity: 1;
@@ -85,7 +84,6 @@
 }
 
 @keyframes bounce {
-
   0%,
   20%,
   53%,
@@ -120,7 +118,6 @@
 
 /* Hover Animasyonları */
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0px);
@@ -132,19 +129,19 @@
 }
 
 @keyframes glow {
-
   0%,
   100% {
     box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
   }
 
   50% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6);
+    box-shadow:
+      0 0 20px rgba(59, 130, 246, 0.8),
+      0 0 30px rgba(59, 130, 246, 0.6);
   }
 }
 
 @keyframes wiggle {
-
   0%,
   7% {
     transform: rotateZ(0);
@@ -188,7 +185,6 @@
 }
 
 @keyframes neumorphismGlow {
-
   0%,
   100% {
     box-shadow:
@@ -255,10 +251,12 @@
 }
 
 .animate-glass-shimmer {
-  background: linear-gradient(90deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.3) 50%,
-      rgba(255, 255, 255, 0.1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
   background-size: 200% 100%;
   animation: glassShimmer 2s infinite;
 }
@@ -269,7 +267,9 @@
 
 /* Hover Efektleri */
 .hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .hover-lift:hover {
@@ -393,7 +393,7 @@
 }
 
 .card-hover-perfect::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -421,7 +421,9 @@
 }
 
 .card-hover-glow:hover {
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4), 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 0 30px rgba(59, 130, 246, 0.4),
+    0 20px 40px -12px rgba(0, 0, 0, 0.15);
 }
 
 /* Tamamen İz Bırakmayan Hover Efektleri - V3 */
@@ -582,7 +584,9 @@
 .page-enter-active {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .page-exit {
@@ -593,5 +597,7 @@
 .page-exit-active {
   opacity: 0;
   transform: translateY(-20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Navigation } from './navigation';
-import { Footer } from './footer';
-import { ScrollToTopButton } from '../ui/scroll-to-top-button';
+import React from "react";
+import { Navigation } from "./navigation";
+import { Footer } from "./footer";
+import { ScrollToTopButton } from "../ui/scroll-to-top-button";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -10,11 +10,9 @@ interface LayoutProps {
 
 export function Layout({ children, className }: LayoutProps) {
   return (
-    <div className={`min-h-screen flex flex-col ${className || ''}`}>
+    <div className={`min-h-screen flex flex-col ${className || ""}`}>
       <Navigation />
-      <main className="flex-1">
-        {children}
-      </main>
+      <main className="flex-1">{children}</main>
       <Footer />
       <ScrollToTopButton />
     </div>
