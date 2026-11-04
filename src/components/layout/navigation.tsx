@@ -1,9 +1,9 @@
-import { Link, useLocation } from 'react-router-dom';
-import { Button } from '../ui/button';
-import { LanguageSwitcher } from '../ui/language-switcher';
-import { useLanguage } from '../../contexts/LanguageContext';
-import { cn } from '../../utils/cn';
-import { useState, useEffect } from 'react';
+import { Link, useLocation } from "react-router-dom";
+import { Button } from "../ui/button";
+import { LanguageSwitcher } from "../ui/language-switcher";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { cn } from "../../utils/cn";
+import { useState, useEffect } from "react";
 
 interface NavigationProps {
   className?: string;
@@ -21,78 +21,81 @@ export function Navigation({ className }: NavigationProps) {
       setIsScrolled(scrollTop > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Body scroll'u menü açıkken engelle
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
 
     // Cleanup function
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isMobileMenuOpen]);
 
   const navItems = [
     {
-      label: t('nav.corporate'),
-      href: '/corporate',
+      label: t("nav.corporate"),
+      href: "/corporate",
       hasDropdown: true,
       dropdownItems: [
-        { href: '/about', label: t('nav.about') },
-        { href: '/vision-mission', label: t('nav.visionMission') },
-        { href: '/kvk', label: t('nav.kvk') },
-        { href: '/sustainability', label: t('nav.sustainability') },
-        { href: '/catalog', label: t('nav.catalog') },
-      ]
+        { href: "/about", label: t("nav.about") },
+        { href: "/vision-mission", label: t("nav.visionMission") },
+        { href: "/kvk", label: t("nav.kvk") },
+        { href: "/sustainability", label: t("nav.sustainability") },
+        { href: "/catalog", label: t("nav.catalog") },
+      ],
     },
     {
-      label: t('nav.services'),
-      href: '/services',
+      label: t("nav.services"),
+      href: "/services",
       hasDropdown: true,
       dropdownItems: [
-        { href: '/services', label: 'Hizmetlerimiz' },
-        { href: '/services/road', label: t('nav.roadTransport') },
-        { href: '/services/sea', label: t('nav.seaTransport') },
-        { href: '/services/air', label: t('nav.airTransport') },
-        { href: '/services/warehouse', label: t('nav.warehouseServices') },
-        { href: '/services/container', label: t('nav.containerSales') },
-        { href: '/services/ship', label: t('nav.shipUnloading') },
-      ]
+        { href: "/services", label: "Hizmetlerimiz" },
+        { href: "/services/road", label: t("nav.roadTransport") },
+        { href: "/services/sea", label: t("nav.seaTransport") },
+        { href: "/services/air", label: t("nav.airTransport") },
+        { href: "/services/warehouse", label: t("nav.warehouseServices") },
+        { href: "/services/container", label: t("nav.containerSales") },
+        { href: "/services/ship", label: t("nav.shipUnloading") },
+      ],
     },
-    { href: '/work-method', label: t('nav.workMethod') },
+    { href: "/work-method", label: t("nav.workMethod") },
     {
-      label: t('nav.press'),
-      href: '/press-room',
+      label: t("nav.press"),
+      href: "/press-room",
       hasDropdown: true,
       dropdownItems: [
-        { href: '/press-room/news', label: t('nav.pressNews') },
-        { href: '/press-room/events', label: t('nav.events') },
-      ]
+        { href: "/press-room/news", label: t("nav.pressNews") },
+        { href: "/press-room/events", label: t("nav.events") },
+      ],
     },
-    { href: '/human-resources', label: t('nav.humanResources') },
-    { href: '/contact', label: t('nav.contact') },
+    { href: "/human-resources", label: t("nav.humanResources") },
+    { href: "/contact", label: t("nav.contact") },
   ];
 
   return (
-    <nav className={cn(
-      'border-b border-white/20 shadow-lg sticky top-0 z-50 animate-slide-in-down transition-all duration-300',
-      isScrolled
-        ? 'bg-white shadow-xl'
-        : 'glass-effect',
-      className
-    )}>
+    <nav
+      className={cn(
+        "border-b border-white/20 shadow-lg sticky top-0 z-50 animate-slide-in-down transition-all duration-300",
+        isScrolled ? "bg-white shadow-xl" : "glass-effect",
+        className,
+      )}
+    >
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center group animate-fade-in-left">
+            <Link
+              to="/"
+              className="flex items-center group animate-fade-in-left"
+            >
               <img
                 src="/images/logo/ufuk-loj-logo.svg"
                 alt="Ufuk Lojistik Logo"
@@ -112,17 +115,27 @@ export function Navigation({ className }: NavigationProps) {
                   <Link
                     to={item.href}
                     className={cn(
-                      'px-4 py-3 rounded-lg text-base font-semibold transition-all duration-300 relative whitespace-nowrap hover-lift flex items-center justify-center min-w-fit',
+                      "px-4 py-3 rounded-lg text-base font-semibold transition-all duration-300 relative whitespace-nowrap hover-lift flex items-center justify-center min-w-fit",
                       location.pathname === item.href
-                        ? 'bg-blue-50 text-blue-600 shadow-lg animate-glow'
-                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                        ? "bg-blue-50 text-blue-600 shadow-lg animate-glow"
+                        : "text-gray-700 hover:text-blue-600 hover:bg-gray-50",
                     )}
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <span className="block">{item.label}</span>
                     {item.hasDropdown && (
-                      <svg className="w-4 h-4 ml-2 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      <svg
+                        className="w-4 h-4 ml-2 transition-transform duration-200 group-hover:rotate-180"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
                       </svg>
                     )}
                     {location.pathname === item.href && (
@@ -134,16 +147,20 @@ export function Navigation({ className }: NavigationProps) {
                   {item.hasDropdown && (
                     <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-60 bg-white rounded-xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                       <div className="py-3">
-                        {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
-                          <Link
-                            key={dropdownItem.href}
-                            to={dropdownItem.href}
-                            className="block px-5 py-3 text-base text-gray-800 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 font-medium rounded-lg mx-2"
-                            style={{ animationDelay: `${dropdownIndex * 0.05}s` }}
-                          >
-                            {dropdownItem.label}
-                          </Link>
-                        ))}
+                        {item.dropdownItems?.map(
+                          (dropdownItem, dropdownIndex) => (
+                            <Link
+                              key={dropdownItem.href}
+                              to={dropdownItem.href}
+                              className="block px-5 py-3 text-base text-gray-800 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 font-medium rounded-lg mx-2"
+                              style={{
+                                animationDelay: `${dropdownIndex * 0.05}s`,
+                              }}
+                            >
+                              {dropdownItem.label}
+                            </Link>
+                          ),
+                        )}
                       </div>
                     </div>
                   )}
@@ -163,7 +180,7 @@ export function Navigation({ className }: NavigationProps) {
                 className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-full px-6 py-3 text-base font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover-glow whitespace-nowrap w-32 flex items-center justify-center"
                 asChild
               >
-                <Link to="/auth">{t('nav.customerLogin')}</Link>
+                <Link to="/auth">{t("nav.customerLogin")}</Link>
               </Button>
             </div>
           </div>
@@ -211,10 +228,10 @@ export function Navigation({ className }: NavigationProps) {
                     to={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={cn(
-                      'block px-4 py-3 rounded-lg text-lg font-semibold transition-all duration-200 border-l-4',
+                      "block px-4 py-3 rounded-lg text-lg font-semibold transition-all duration-200 border-l-4",
                       location.pathname === item.href
-                        ? 'bg-blue-50 text-blue-600 border-blue-500'
-                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 border-transparent hover:border-gray-300'
+                        ? "bg-blue-50 text-blue-600 border-blue-500"
+                        : "text-gray-700 hover:text-blue-600 hover:bg-gray-50 border-transparent hover:border-gray-300",
                     )}
                   >
                     {item.label}
@@ -229,10 +246,10 @@ export function Navigation({ className }: NavigationProps) {
                           to={dropdownItem.href}
                           onClick={() => setIsMobileMenuOpen(false)}
                           className={cn(
-                            'block px-4 py-2 rounded-md text-base font-medium transition-all duration-200 border-l-2',
+                            "block px-4 py-2 rounded-md text-base font-medium transition-all duration-200 border-l-2",
                             location.pathname === dropdownItem.href
-                              ? 'bg-blue-50 text-blue-600 border-blue-400'
-                              : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50 border-transparent hover:border-gray-300'
+                              ? "bg-blue-50 text-blue-600 border-blue-400"
+                              : "text-gray-600 hover:text-blue-600 hover:bg-gray-50 border-transparent hover:border-gray-300",
                           )}
                         >
                           {dropdownItem.label}
@@ -255,7 +272,7 @@ export function Navigation({ className }: NavigationProps) {
                     asChild
                   >
                     <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
-                      {t('nav.customerLogin')}
+                      {t("nav.customerLogin")}
                     </Link>
                   </Button>
                 </div>
